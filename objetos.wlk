@@ -20,6 +20,10 @@ object lionel {
 	method irAInicio() {
 		position = game.at(0, 5)
 	}
+
+	method taquito(distancia) {
+		pelota.desplazar(distancia)
+	}
 	
 }
 
@@ -27,4 +31,16 @@ object lionel {
 object pelota {
 	const property image="pelota.png"
 	var property position = game.at(5,5)	
+
+	method desplazar(distancia) {
+		self.validarLionelAca()
+		position = game.at(position.x() - distancia, 5)
+	}
+
+	method validarLionelAca() {
+		if (lionel.position() != self.position()){
+			self.error("Lionel no esta parado en la pelota")
+		}
+		
+	}
 }
