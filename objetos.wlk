@@ -20,11 +20,25 @@ object lionel {
 	method irAInicio() {
 		position = game.at(0, 5)
 	}
+
+	method patearPelota(distancia) {
+		self.validarPelotaAca()
+		pelota.patear(distancia)
+	}
 	
+	method validarPelotaAca() {
+		if(self.position() != pelota.position()) {
+			self.error("No se encuentra en la pelota")
+		}
+	}
 }
 
 
 object pelota {
 	const property image="pelota.png"
 	var property position = game.at(5,5)	
+
+	method patear(distancia) {
+		position = game.at(position.x() + distancia, 5)
+	}
 }
